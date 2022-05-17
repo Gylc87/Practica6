@@ -11,8 +11,8 @@ while True:
     
 
     #HSV HUE, SAT, VALUE
-    rojo_bajo = np.array([30,150,50])
-    rojo_alto = np.array([255,255,180])
+    rojo_bajo = np.array([150,150,45])
+    rojo_alto = np.array([180,255,150])
 
     mascara = cv2.inRange(hsv, rojo_bajo, rojo_alto)
     resultado = cv2.bitwise_and(frame, frame, mask= mascara)
