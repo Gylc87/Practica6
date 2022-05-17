@@ -1,15 +1,13 @@
 import cv2
 import numpy as np
+from matplotlib import pyplot as plt
 
 cap = cv2.VideoCapture(0)
-
-
 
 while True:
     _, frame = cap.read()
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     
-
     #HSV HUE, SAT, VALUE ROJO    
     rojo_bajo1 = np.array([0,255,20],np.uint8)
     rojo_alto1 = np.array([5,255,255],np.uint8)
@@ -35,18 +33,13 @@ while True:
     mascara_amarillo = cv2.inRange(hsv, amarillo_bajo, amarillo_alto)
     resultado_amarillo = cv2.bitwise_and(frame, frame, mask= mascara_amarillo)
 
-
     cv2.imshow("Frame", frame)
-    
     cv2.imshow("Mascara Rojo", mascara_rojo)
     cv2.imshow("Resultado Rojo", resultado_rojo2)
-
     cv2.imshow("Mascara Azul", mascara_azul)
     cv2.imshow("Resultado Azul", resultado_azul)
-    
     cv2.imshow("Mascara Amarillo", mascara_amarillo)
     cv2.imshow("Resultado Amarillo", resultado_amarillo)
-
 
     k = cv2.waitKey(5) & 0xFF
     if k ==27:
